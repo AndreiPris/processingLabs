@@ -15,6 +15,12 @@ void setup()
 }
 void draw() 
 {
+  Vector2 a = new Vector2(1, 1);
+  Vector2 b = new Vector2(3, 4);
+  
+  a.Add(b);
+  
+  
   rect(positionX, positionY, radius, radius);
   println(positionX);
   println(positionY);
@@ -49,4 +55,34 @@ void draw()
     if(positionY < 0){
       positionY += radius;
     }  
+}
+
+public class bebra{
+  private int aboba;
+  
+  public bebra(int a){
+    aboba = a;
+  }
+  
+  public int GetAboba(){
+    return aboba;
+  }
+}
+
+public class Vector2{
+  public float x;
+  public float y;
+  
+  public Vector2(float x, float y){
+    this.x = x;
+    this.y = y;
+  }
+  
+  public Vector2 Add(Vector2 b){
+    return new Vector2(this.x + b.x, this.y + b.y);
+  }
+  
+  public Vector2 Subtract(Vector2 b){
+    return new Vector2(this.x - b.x, this.y - b.y);
+  }
 }
