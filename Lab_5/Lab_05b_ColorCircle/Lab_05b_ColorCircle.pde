@@ -1,5 +1,5 @@
 void setup() {
-  size(500, 500);
+  size(300, 300);
   background(255);
   strokeWeight(1);
   frameRate(100);
@@ -8,7 +8,7 @@ void setup() {
   float counter;
   float cx;
   float cy;
-  float cRadius = 200;
+  float cRadius = 100;
   
 void draw() {
    cx = width / 2;
