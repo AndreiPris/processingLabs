@@ -11,6 +11,7 @@ int hits = 0, misses = 0;
   frameRate(10);
   noStroke();
   textSize(30);
+}
 
  public void draw(){
   if(letter != player && counter == 30){

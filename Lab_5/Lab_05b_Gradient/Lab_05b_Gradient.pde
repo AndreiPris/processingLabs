@@ -1,7 +1,7 @@
 int a = 255;
 
 void setup(){
-  size(512, 100);
+  size(511, 100);
 }
 
 void draw(){
@@ -10,8 +10,6 @@ void draw(){
      line(i, 0, i, height);
      stroke(a);
      line(255 + i, 0, 255 + i, height);     
-     print(255 + i);
-     println(i);
      a -= 1;
    }
   noLoop();
