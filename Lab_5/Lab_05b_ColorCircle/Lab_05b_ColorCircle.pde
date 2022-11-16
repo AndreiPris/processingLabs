@@ -1,30 +1,24 @@
-float degrees = 360;
-float radians;
-int size = 200;
-float testH;
-float testW;
-
-void setup (){
-   size(300, 300); 
-   //noStroke();
-   strokeWeight(1);
+void setup() {
+  size(500, 500);
+  background(255);
+  strokeWeight(1);
+  frameRate(100);
 }
 
-void draw(){
-  testH = height / 2 - size / 2;
-  testW = width / 2;
-  radians = radians(degrees);
-  circle(width / 2, height / 2, size);
+  float counter;
+  float cx;
+  float cy;
+  float cRadius = 200;
   
-  for(int i = 0; i < 100; i ++){
-    //fill(random(255));
-    line(width / 2, height / 2,  testW, testH);
-    testW += 1;
-    testH += 1;
-  }
-  println(radians);
-  noLoop();
+void draw() {
+   cx = width / 2;
+   cy = height / 2;
+   while(counter < 2 *PI){
+     float x1 = sin(counter) * cRadius + cx;
+     float y1 = cos(counter) * cRadius + cy;
+     stroke(random(255), random(255), random(255));
+     line(cx , cy , x1 , y1);
+     counter += 2 * PI / 500;
+   }
 }
-
-// идея можно разделить круг на четыре части
-// и когда он будет больше значения ппервой части поменять знаки направления
+  
