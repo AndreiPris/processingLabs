@@ -5,7 +5,7 @@ String text = "";
 int size = 21;
 String textAi = "";
 int k;
-int w1, w2;
+String winner = "";
 boolean ref = false;
 
 void setup() {
@@ -30,7 +30,7 @@ void draw() {
   text("Ai: " + textAi, 10, 240);
   if(ref == true){
     background(255);
-    text("won", width / 2 - 100, height / 2);
+    text(winner + " won", width / 2 - 100, height / 2);
     noLoop();
     return;
   }
@@ -49,20 +49,21 @@ void keyReleased(){
     if(size <= 0){
       background(255);
       textSize(50);
-      text("You won", width / 2 - 100, height / 2);
+      winner = "You";
       ref = true;
     }
     size -= ai;
     if(size <= 0 && ref == false){
       background(255);
       textSize(50);
-      text("Ai won", width / 2 - 100, height / 2);
+      winner = "Ai";
       ref = true;
     }
-    i = 0;
-    x = 10;
   }
   else{
+    background(255);
     text = "Only 1, 2 or 3, allowed!";
   }
+  i = 0;
+  x = 10;
 }
