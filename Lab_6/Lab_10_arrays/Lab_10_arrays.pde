@@ -10,7 +10,7 @@ int number = 6;
 
 
 void setup(){
-  size(650, 450);
+  size(700, 500);
   background(0);
   stroke(255);
   textSize(15);
@@ -29,6 +29,23 @@ void setup(){
     randomIntNumbersArr[i] = int(random(-15, 15));
   }
   toString = arrayToString(numberArr, " ");
+  print(randomIntNumbersArr.length);
+}
+
+void shuffle( int[] numberArr ){
+  int index1 = 0;
+  int index2 = 0;
+  int temp;
+  for(int i = 0; i < 100; i++){
+    do{
+      index1 = int(random(0, numberArr.length));
+      index2 = int(random(0, numberArr.length));
+    }
+    while(index1 == index2);
+    temp = numberArr[index1];
+    numberArr[index1] = numberArr[index2];
+    numberArr[index2] = temp;
+  }
 }
 
 void draw(){
@@ -54,6 +71,11 @@ void draw(){
   text("Amount of random numbers smaller than " + number + " = " + countIfSmaller(randomIntNumbersArr, number), 10, x * 16);
   text("Amount of even numbers  eaules to max (" + maxElement(evenNumbersArr) + ") = " + countIfEqualMax(evenNumbersArr), 10, x * 17);
   text("Amount of random numbers eaules to max (" + maxElement(randomIntNumbersArr) + ") = " + countIfEqualMax(randomIntNumbersArr), 10, x * 18);
+  shuffle(evenNumbersArr);
+  text("Shuffled even numbers: " + arrayToString(evenNumbersArr, " - "), 10, x * 19);
+  shuffle(randomIntNumbersArr);
+  text("Shuffled random numbers: " + arrayToString(randomIntNumbersArr, " - "), 10, x * 20);
+  noLoop();
 }
 
 String arrayToString(int[] numberArr, String separator){
