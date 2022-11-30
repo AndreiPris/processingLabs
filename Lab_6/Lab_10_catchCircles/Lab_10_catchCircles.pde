@@ -6,7 +6,8 @@ int[] circles;
 void setup(){
   size(500, 500);
   frameRate(30);
-  circles = new int[10];
+  circles = new int[11];
+  circles[0] = 10;
 }
 
 void randomProperties(){
@@ -22,10 +23,11 @@ void draw(){
   if(frameCounter == 59){
     randomProperties();
   }
+  circle(x, y, radius);
+  arrSort(circles);
   for(int i = 0; i < circles.length; i++){
-    circle(x, y, radius);
+      circle(mouseX, mouseY, circles[i]);
   }
-  circle(mouseX, mouseY, 10);
   frameCounter += 1;
 }
 
@@ -37,10 +39,26 @@ void mousePressed(){
     miss ++;
     println("?"+miss);
   }else{
-    
+    hit++;
+    circles[hit] += radius;
     randomProperties();
     frameCounter = 1;
-    hit++;
-    println(";)"+hit);
+    println(";)"+ circles[hit]);
+  }
+}
+
+void arrSort( int[] numberArr){
+  int max = 0;
+  int temp;
+  for(int i = 0; i < numberArr.length; i++){
+    temp = numberArr[i];
+    for(int j = i+1; i < numberArr.length; i++){
+      if(max < numberArr[j]){
+        max = numberArr[j
+        temp = 
+        
+      }
+      printArray(numberArr);
+    }
   }
 }
