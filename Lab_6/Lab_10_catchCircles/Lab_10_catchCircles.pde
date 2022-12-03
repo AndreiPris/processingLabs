@@ -2,6 +2,7 @@ int x, y, radius;
 int frameCounter = 0;
 int miss, hit;
 int[] circles;
+boolean play = true;
  
 void setup(){
   size(500, 500);
@@ -19,6 +20,7 @@ void randomProperties(){
 
 void draw(){
   background(255);
+  fill(255);
   frameCounter %= 60;
   if(frameCounter == 59){
     randomProperties();
@@ -28,7 +30,13 @@ void draw(){
   for(int i = 0; i < circles.length; i++){
       circle(mouseX, mouseY, circles[i]);
   }
+  fill(0);
+  text("Hits: " + hit + " Misses: " + miss, 10, 10);
   frameCounter += 1;
+  endGame();
+  if(!play){
+    noLoop();
+  }
 }
 
 void mousePressed(){
@@ -37,28 +45,44 @@ void mousePressed(){
     randomProperties();
     frameCounter = 1;
     miss ++;
-    println("?"+miss);
-  }else{
+  }else{ 
     hit++;
     circles[hit] += radius;
     randomProperties();
     frameCounter = 1;
-    println(";)"+ circles[hit]);
   }
 }
 
 void arrSort( int[] numberArr){
-  int max = 0;
+  boolean sorted = false;
   int temp;
-  for(int i = 0; i < numberArr.length; i++){
-    temp = numberArr[i];
-    for(int j = i+1; i < numberArr.length; i++){
-      if(max < numberArr[j]){
-        max = numberArr[j
-        temp = 
-        
+  while(!sorted) {
+    sorted = true;
+    for (int i = 0; i < numberArr.length - 1; i++) {
+      if (numberArr[i] < numberArr[i+1]) {
+        temp = numberArr[i];
+        numberArr[i] = numberArr[i+1];
+        numberArr[i+1] = temp;
+        sorted = false;
       }
-      printArray(numberArr);
     }
   }
+}
+
+void endGame(){
+  if(hit >= 10){
+    fill(0);
+    background(0, 255, 0);
+    textSize(30);
+    text("CONGLATULATIONS!!", width / 2 - 130, height / 2);
+    play = false;
+  }
+  if(miss >= 3){
+    fill(0);
+    background(255, 0, 0);
+    textSize(30);
+    text("GAME OVER!!", width / 2 - 100, height / 2);
+    play = false;
+  }
+  
 }
