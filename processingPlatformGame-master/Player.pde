@@ -41,11 +41,13 @@ class Unicorn {
       friction = 1;
       facingRight = false;
     }
+    
     if (right){
       accelerationX = 0.2;
       friction = 1;
       facingRight = true;
     }
+    
     if(!left && !right) {
       accelerationX = 0;
       friction = 0.96;
@@ -55,16 +57,15 @@ class Unicorn {
       friction = 0.96;
       gravity = 0.3;
     }
-
+    
     if (up && isOnGround){
       vy += jumpForce;
       isOnGround = false;
       friction = 1;
     }
-
     vx += accelerationX;
     vy += accelerationY;
-
+    
     ////apply the forces of the universe
     if (isOnGround){
       vx *= friction;
@@ -105,23 +106,23 @@ class Unicorn {
     }
   }
   void checkBoundaries(){
-    ////check boundaries
-    ////left
+    //check boundaries;
+    //left
     if (x < -w){
-      // vx *= bounce;
-      // x = 0;
+       vx *= bounce;
+       x = 0;
       x = width;
     }
-    if (x  > width){
+    if (x > width){
     //// right
-      // vx *= bounce;
-      // x = width - w;
+       vx *= bounce;
+       x = width - w;
       x = -w;
     }
     ////top
     if (y < 0){
-      // vy *= bounce;
-      // y = 0;
+       vy *= bounce;
+       y = 0;
     }
     if (y + h > height){
       y = height - h;
@@ -129,6 +130,7 @@ class Unicorn {
       vy = -gravity;
     }    
   }
+  
   void display(){
     fill(0,255,0,128);
     rect(x ,y ,w ,h);
