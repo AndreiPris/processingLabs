@@ -1,4 +1,4 @@
-class Unicorn {
+class Dino {
 
   float w,h,x,y,vx,vy,
   accelerationX,accelerationY,
@@ -11,11 +11,11 @@ class Unicorn {
   boolean facingRight;
   int frameSequence;
 
-  Unicorn(){
-    w = 140;
-    h = 95;
-    x = 10;
-    y = 150;
+  Dino(){
+    w = 83;
+    h = 83;
+    x = 300;
+    y = 600;
     vx = 0;
     vy = 0;
     accelerationX = 0;
@@ -32,40 +32,60 @@ class Unicorn {
 
     currentFrame = 0;
     collisionSide = "";
-    frameSequence = 6;
+    frameSequence = 2;
   }
 
   void update(){
     if (left){
+      // vx =-5;
       accelerationX = -0.2;
       friction = 1;
       facingRight = false;
+      // if(currentFrame <= startLeft){currentFrame=startLeft;}
+
     }
-    
     if (right){
+      // vx =5;
       accelerationX = 0.2;
       friction = 1;
       facingRight = true;
     }
-    
-    if(!left && !right) {
+    if(!left&&!right) {
+      // vx=0;
       accelerationX = 0;
       friction = 0.96;
       gravity = 0.3;
-    }else if (left && right){
+    }else if (left&&right){
+      // vx=0;
       accelerationX = 0;
       friction = 0.96;
       gravity = 0.3;
     }
-    
+
+    // if (up){
+    //   vy =-5;
+    // }
+    // if (down){
+    //   vy =5;
+    // }
+    // if(!up&&!down) {
+    //   vy=0;
+    // }else if (up&&down){
+    //   vy=0;
+    // }
+    // if (!up&&!down&&!left&&!right){
+    //   // walking = false;
+    // }
+
     if (up && isOnGround){
       vy += jumpForce;
       isOnGround = false;
       friction = 1;
     }
+
     vx += accelerationX;
     vy += accelerationY;
-    
+
     ////apply the forces of the universe
     if (isOnGround){
       vx *= friction;
@@ -106,23 +126,23 @@ class Unicorn {
     }
   }
   void checkBoundaries(){
-    //check boundaries;
-    //left
+    ////check boundaries
+    ////left
     if (x < -w){
-       vx *= bounce;
-       x = 0;
+      // vx *= bounce;
+      // x = 0;
       x = width;
     }
-    if (x > width){
+    if (x  > width){
     //// right
-       vx *= bounce;
-       x = width - w;
+      // vx *= bounce;
+      // x = width - w;
       x = -w;
     }
     ////top
     if (y < 0){
-       vy *= bounce;
-       y = 0;
+      // vy *= bounce;
+      // y = 0;
     }
     if (y + h > height){
       y = height - h;
@@ -130,23 +150,22 @@ class Unicorn {
       vy = -gravity;
     }    
   }
-  
   void display(){
-    fill(0,255,0,128);
+    fill(0);
     rect(x ,y ,w ,h);
     if (facingRight){
-      image(spriteImages[currentFrame],x,y+3);
+      image(spriteImages[currentFrame],x, y);
     }else{
-      image(spriteImages[currentFrame+6],x,y+3);
+      image(spriteImages[currentFrame+1],x,y);
 
     }
     // image(spriteImages[currentFrame],x,y+3);
-    if (abs(vx)>1 && isOnGround){
-      println("currentFrame: "+currentFrame);
-        currentFrame = (currentFrame+1)%frameSequence;
-    }else{
-      currentFrame = 0;
-    }
+    //if (abs(vx)>1 && isOnGround){
+    //  println("currentFrame: " + currentFrame);
+    //    currentFrame = (currentFrame+1) % frameSequence;
+    //}else{
+    //  currentFrame = 0;
+    //}
 
   }
 
