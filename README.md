@@ -1,0 +1,1 @@
+Hello! This is a collection of my lab assignments in Processing and the game I created. Processing is a free graphics library and integrated development environment. Using the Java programming language in Processing, I learned how to develop games. My game is a platformer called "Dragon Jump."
